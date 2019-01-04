@@ -46,11 +46,12 @@ class Home extends StatelessWidget {
             title: Text('zhoubinzhoubin'),
             // 阴影
             elevation: 3,
-            leading: IconButton(
-              icon: Icon(Icons.menu),
-              tooltip: 'menu',
-              onPressed: null,
-            ),  
+            // 左侧的按钮 
+            // leading: IconButton(
+            //   icon: Icon(Icons.menu),
+            //   tooltip: 'menu',
+            //   onPressed: null,
+            // ),  
             actions: <Widget>[
               IconButton(
               icon: Icon(Icons.message),
@@ -94,31 +95,47 @@ class Home extends StatelessWidget {
             child: ListView(
               padding: EdgeInsets.zero,
               children: <Widget>[
-                DrawerHeader(
-                  child: Text('header'.toUpperCase()),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[100],
+                // DrawerHeader(
+                //   child: Text('header'.toUpperCase()),
+                //   decoration: BoxDecoration(
+                //     color: Colors.grey[100],
+                //   ),
+                // ),
+
+                // 如果要是设置用户账户信息，可以使用下面的控件
+                UserAccountsDrawerHeader(
+                  accountName: Text('周彬',style: TextStyle(fontWeight: FontWeight.bold),),
+                  accountEmail: Text('1066283497@qq.com'),
+                  // 原型图像
+                  currentAccountPicture: CircleAvatar(
+                    backgroundImage: NetworkImage("https://upload.jianshu.io/users/upload_avatars/2530231/992028d36960?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240"),
                   ),
                 ),
+                
                 ListTile(
                   title: Text('Messages', textAlign:TextAlign.right,),
                   // 在标题的左边或者右边设置图片
                   trailing: Icon(Icons.message,color: Colors.black12,size: 20.0,),
+                  // 点击按钮返回
+                  onTap: (){return Navigator.pop(context);},
                 ),
                 ListTile(
                   title: Text('Messages', textAlign:TextAlign.right,),
                   // 在标题的左边或者右边设置图片
                   trailing: Icon(Icons.message,color: Colors.black12,size: 20.0,),
+                  onTap: ()=> Navigator.pop(context),
                 ),
                 ListTile(
                   title: Text('Messages', textAlign:TextAlign.right,),
                   // 在标题的左边或者右边设置图片
                   trailing: Icon(Icons.message,color: Colors.black12,size: 20.0,),
+                  onTap: ()=> Navigator.pop(context),
                 ),
                 ListTile(
                   title: Text('Messages', textAlign:TextAlign.right,),
                   // 在标题的左边或者右边设置图片
                   trailing: Icon(Icons.message,color: Colors.black12,size: 20.0,),
+                  onTap: ()=> Navigator.pop(context),
                 )
               ],
             ),
