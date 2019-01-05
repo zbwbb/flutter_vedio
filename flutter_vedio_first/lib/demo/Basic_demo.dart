@@ -81,14 +81,33 @@ class ContainerDemo extends StatelessWidget {
           children: <Widget>[
             Container(
               child: Icon(Icons.pool, size: 32.0, color: Colors.orange,),
-              color: Colors.pink,
+              // color: Colors.pink,
               // 内边距
               padding: EdgeInsets.all(20.0),
               // 外边距
               margin: EdgeInsets.all(50.0),
               width: 90.0,
               height: 100.0,
-
+              // 设置容器的装饰
+              decoration: BoxDecoration(
+                // 此处的color 与外部container中的color 冲突
+                color: Colors.pink,
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.black,
+                    width: 5.0,
+                    style: BorderStyle.solid
+                  ),
+                  top: BorderSide(
+                    color: Colors.green,
+                    width: 5.0,
+                    style: BorderStyle.solid
+                  ),
+                ),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(16.0),
+                ),
+              ),
             ),
           ],
 

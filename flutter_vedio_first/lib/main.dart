@@ -3,6 +3,7 @@ import 'package:flutter_vedio_first/demo/listviewdemo.dart';
 import 'package:flutter_vedio_first/demo/drawer.dart';
 import 'package:flutter_vedio_first/demo/bottom_navgationbar.dart';
 import 'package:flutter_vedio_first/demo/Basic_demo.dart';
+import 'package:flutter_vedio_first/demo/layout_demo.dart';
 
 void main() => runApp(MyApp());
 
@@ -89,7 +90,7 @@ class Home extends StatelessWidget {
             children: <Widget>[
               ListViewDemo(),
               BasicDemo(),
-              Icon(Icons.directions_bike,size: 128.00,color: Colors.black12,),
+              LayoutDemo(),
             ],
           ),
           // 抽屉 enddrawer:右侧
