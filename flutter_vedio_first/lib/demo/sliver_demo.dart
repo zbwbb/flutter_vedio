@@ -9,6 +9,13 @@ class SliverDemo extends StatelessWidget {
       // 创建一个  自定义滑动视图
       body: CustomScrollView(
         slivers: <Widget>[
+              // sliverAppBar 导航工具蓝  与appbar不同的是，这个部件是可以改变的
+          SliverAppBar(
+            title: Text('zhoubin'),
+            // 不随滑动改变
+            // pinned: true,
+            floating: true,
+          ),
           // 安全区是最外层
           SliverSafeArea(
             sliver: SliverPadding(
@@ -35,10 +42,41 @@ class SliverListDemo extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
         // 参数是个方法
         (BuildContext context, int index) {
-          return Container(
-            child: Image.network(
-              posts[index].imageUrl,
-              fit: BoxFit.fill,
+          // 边距控件 padding
+          return Padding(
+            padding: EdgeInsets.all(8.0),
+            // 设置一些基础效果 可以用这个控件
+            child: Material(
+              borderRadius: BorderRadius.circular(20),
+              elevation: 15.0,
+              shadowColor: Colors.black,
+              // 堆叠效果
+              child: Stack(
+                children: <Widget>[
+                  // 让子控件按照一定的比例显示
+                  AspectRatio(
+                    aspectRatio: 4 / 3,
+                    child: Container(
+                      child: Image.network(
+                        posts[index].imageUrl,
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 32.0,
+                    left: 32.0,
+                    child: Column(
+                      // 设置子控件在交叉轴上的对其方式
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        Text(posts[index].title, style: TextStyle(color: Colors.red,fontSize: 30),),
+                        Text(posts[index].title, style: TextStyle(color: Colors.black,fontSize: 20),),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         },
@@ -47,7 +85,6 @@ class SliverListDemo extends StatelessWidget {
     );
   }
 }
-
 
 /**
  * slivergrid
