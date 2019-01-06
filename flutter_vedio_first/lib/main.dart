@@ -5,6 +5,7 @@ import 'package:flutter_vedio_first/demo/bottom_navgationbar.dart';
 import 'package:flutter_vedio_first/demo/Basic_demo.dart';
 import 'package:flutter_vedio_first/demo/layout_demo.dart';
 import 'package:flutter_vedio_first/demo/ViewDemo.dart';
+import 'package:flutter_vedio_first/demo/sliver_demo.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       // 
       return MaterialApp(
         // 首页布局
-        home: Home(),
+        home: SliverDemo(),
         // 主题信息
         theme: ThemeData(
           // 主题颜色
