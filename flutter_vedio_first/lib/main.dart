@@ -4,6 +4,7 @@ import 'package:flutter_vedio_first/demo/drawer.dart';
 import 'package:flutter_vedio_first/demo/bottom_navgationbar.dart';
 import 'package:flutter_vedio_first/demo/Basic_demo.dart';
 import 'package:flutter_vedio_first/demo/layout_demo.dart';
+import 'package:flutter_vedio_first/demo/ViewDemo.dart';
 
 void main() => runApp(MyApp());
 
@@ -40,7 +41,7 @@ class Home extends StatelessWidget {
       // DefaultTabController 提供默认的tabar控制器
       return DefaultTabController(
         // 设置控制器的个数
-        length: 3,
+        length: 4,
         // scaffold 提供界面的基本结构
         child: Scaffold(
         // 背景色
@@ -49,7 +50,7 @@ class Home extends StatelessWidget {
           appBar: new AppBar(
             title: Text('zhoubinzhoubin'),
             // 阴影
-            elevation: 3,
+            elevation: 4,
             // 左侧的按钮 
             // leading: IconButton(
             //   icon: Icon(Icons.menu),
@@ -82,6 +83,9 @@ class Home extends StatelessWidget {
                 Tab(
                   icon: Icon(Icons.local_cafe),
                 ),
+                Tab(
+                  icon: Icon(Icons.local_bar),
+                ),
               ],
             ),
           ),
@@ -91,6 +95,7 @@ class Home extends StatelessWidget {
               ListViewDemo(),
               BasicDemo(),
               LayoutDemo(),
+              ViewDemo(),
             ],
           ),
           // 抽屉 enddrawer:右侧
