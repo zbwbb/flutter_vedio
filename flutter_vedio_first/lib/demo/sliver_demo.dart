@@ -14,6 +14,7 @@ class SliverDemo extends StatelessWidget {
             title: Text('zhoubin'),
             // 不随滑动改变
             // pinned: true,
+            // 这个属性：当视图下滑的时候  导航工具栏就会显示出来
             floating: true,
           ),
           // 安全区是最外层
