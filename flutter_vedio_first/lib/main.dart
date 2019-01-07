@@ -6,6 +6,8 @@ import 'package:flutter_vedio_first/demo/Basic_demo.dart';
 import 'package:flutter_vedio_first/demo/layout_demo.dart';
 import 'package:flutter_vedio_first/demo/ViewDemo.dart';
 import 'package:flutter_vedio_first/demo/sliver_demo.dart';
+import 'package:flutter_vedio_first/demo/navigatior_demo.dart';
+import 'package:flutter_vedio_first/demo/form_demo.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +17,8 @@ class MyApp extends StatelessWidget {
       // 
       return MaterialApp(
         // 首页布局
-        home: SliverDemo(),
+        // home 属性也同时定义了根路由，如果这里不指定的话，就要到routers里面去指定
+        // home: NavigatorDemo(),
         // 主题信息
         theme: ThemeData(
           // 主题颜色
@@ -27,6 +30,15 @@ class MyApp extends StatelessWidget {
         ),
         // 去掉调试条目
         debugShowCheckedModeBanner: false,
+        // 可以实现指定 路由的名字 以后直接使用Navigator.pushNamed
+        initialRoute: '/form',
+        routes: {
+          // 斜线 "/" 代表路由的‘根’：初始路由， 默认是home属性设置的部件
+          // 如果不在home里面指定根路由，也可以按照下面的方式指定
+          '/':(context)=>Home(),
+          '/about' : (context)=>Page(title: 'push',),
+          '/form':(context)=>FormDemo()
+        },
       );
     }
 }
@@ -96,7 +108,7 @@ class Home extends StatelessWidget {
               ListViewDemo(),
               BasicDemo(),
               LayoutDemo(),
-              ViewDemo(),
+              SliverDemo(),
             ],
           ),
           // 抽屉 enddrawer:右侧
@@ -109,23 +121,3 @@ class Home extends StatelessWidget {
     }
 }
 
-
-
-/**
- * 自定义一个控件
- */
-class hello extends StatelessWidget {
-  @override
-    Widget build(BuildContext context) {
-      // 所有子控件都居中显示
-      return new Center(
-        child: new Text('zhoubin',
-        textDirection: TextDirection.ltr,
-        style: TextStyle(
-          fontSize: 60,
-          fontWeight: FontWeight.bold,
-          color: Colors.black,
-        ),),
-      );
-    }
-}

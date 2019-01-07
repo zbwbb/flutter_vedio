@@ -11,17 +11,25 @@ class SliverDemo extends StatelessWidget {
         slivers: <Widget>[
               // sliverAppBar 导航工具蓝  与appbar不同的是，这个部件是可以改变的
           SliverAppBar(
-            title: Text('zhoubin'),
+            // title: Text('zhoubin'),
             // 不随滑动改变
             // pinned: true,
             floating: true,
+            // 伸展高度
+            expandedHeight: 150.0,
+            // 将伸展的高度变成弹性空间 通常是 FlexibleSpaceBar 类型
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text('new flutter'.toUpperCase(),style: TextStyle(color: Colors.white),),
+            // bar 的背景
+              background: Image.network(posts[2].imageUrl,fit: BoxFit.fill,),
+            ),
           ),
           // 安全区是最外层
           SliverSafeArea(
             sliver: SliverPadding(
               // 添加内边距 要把子控件嵌套在sliverpadding 内部
               padding: EdgeInsets.all(10.0),
-              sliver: SliverListDemo(),
+              sliver: SliverGridDemo(),
             ),
           ),
         ],
