@@ -23,7 +23,7 @@ class BottomNavigationBarDemoState extends State {
   }
   @override
     Widget build(BuildContext context) {
-      // TODO: implement build
+      // 
       return BottomNavigationBar(
         // 如果底部导航栏的个数超过了四个 ，类型就会改变
         type: BottomNavigationBarType.fixed,
