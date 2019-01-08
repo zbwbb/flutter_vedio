@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
         routes: {
           // 斜线 "/" 代表路由的‘根’：初始路由， 默认是home属性设置的部件
           // 如果不在home里面指定根路由，也可以按照下面的方式指定
+          // 定义根路由的时候不能加名字
           '/':(context)=>Home(),
           '/about' : (context)=>Page(title: 'push',),
           '/form':(context)=>FormDemo()

@@ -22,7 +22,7 @@ class FormDemo extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              TextFieldDemo(),
+              ResigterForm(),
             ],
           ),
         ),
@@ -98,6 +98,58 @@ class _TextFieldDemoState extends State<TextFieldDemo> {
            hintText: '请输入姓名',
            // 边框 去除
           //  border: InputBorder.none
+         ),
+       ),
+    );
+  }
+}
+
+/**
+ * 创建一个注册界面
+ */
+class ResigterForm extends StatefulWidget {
+  _ResigterFormState createState() => _ResigterFormState();
+}
+
+class _ResigterFormState extends State<ResigterForm> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      // 表单 控件
+       child: Form(
+         child: Column(
+           children: <Widget>[
+             //  Creates a [FormField] that contains a [TextField].
+             TextFormField(
+               decoration: InputDecoration(
+                 labelText: 'username',
+               ),
+             ),
+             TextFormField(
+               // 密文
+               obscureText: true,
+               decoration: InputDecoration(
+                 labelText: 'password',
+               ),
+             ),
+             SizedBox(
+               height: 40,
+             ),
+             // 添加按钮
+             Container(
+               width: double.infinity,
+               color: Colors.black,
+               child: RaisedButton(
+                 color: Theme.of(context).primaryColor,
+                 child: Text('Register', style: TextStyle(color: Colors.white),),
+                 elevation: 0.0,
+                 onPressed: (){
+                   debugPrint('注册');
+                 },
+               ),
+             )
+
+           ],
          ),
        ),
     );
