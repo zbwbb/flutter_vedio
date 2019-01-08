@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_vedio_first/demo/form_demo.dart';
+import 'package:flutter_vedio_first/demo/checkbox_demo.dart';
 
 class MaterialComponents extends StatelessWidget {
   // 定义方法 返回图片按钮部件
@@ -34,13 +36,21 @@ class MaterialComponents extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           ListItem(
-            title: 'zhoubin',
+            title: 'floatingbutton',
             page: FloatingActionButtonDemo(),
           ),
           ListItem(
             title: 'button',
             page: ButtonDemo(),
-          )
+          ),
+          ListItem(
+            title: 'form',
+            page: FormDemo(),
+          ),
+          ListItem(
+            title: 'check',
+            page: CheckBoxDemo(),
+          ),
         ],
       ),
       // 悬浮按钮 默认会会在 底部按钮 位置 上面

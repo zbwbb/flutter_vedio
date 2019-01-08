@@ -4,6 +4,9 @@ class FormDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('formdemo'),
+      ),
       // 可以在应用中的某一部分 定制一个特定的主题 这种写法会覆盖之前的主题
       // body: Theme(
       //   data: ThemeData(
