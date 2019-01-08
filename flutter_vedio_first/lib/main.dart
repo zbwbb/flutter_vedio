@@ -8,6 +8,9 @@ import 'package:flutter_vedio_first/demo/ViewDemo.dart';
 import 'package:flutter_vedio_first/demo/sliver_demo.dart';
 import 'package:flutter_vedio_first/demo/navigatior_demo.dart';
 import 'package:flutter_vedio_first/demo/form_demo.dart';
+import 'package:flutter_vedio_first/demo/material_components.dart';
+
+
 
 void main() => runApp(MyApp());
 
@@ -31,14 +34,14 @@ class MyApp extends StatelessWidget {
         // 去掉调试条目
         debugShowCheckedModeBanner: false,
         // 可以实现指定 路由的名字 以后直接使用Navigator.pushNamed
-        initialRoute: '/form',
+        initialRoute: '/mdc',
         routes: {
           // 斜线 "/" 代表路由的‘根’：初始路由， 默认是home属性设置的部件
           // 如果不在home里面指定根路由，也可以按照下面的方式指定
           // 定义根路由的时候不能加名字
           '/':(context)=>Home(),
           '/about' : (context)=>Page(title: 'push',),
-          '/form':(context)=>FormDemo()
+          '/mdc':(context)=>MaterialComponents()
         },
       );
     }
