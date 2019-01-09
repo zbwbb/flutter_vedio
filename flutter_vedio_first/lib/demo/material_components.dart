@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vedio_first/demo/form_demo.dart';
 import 'package:flutter_vedio_first/demo/checkbox_demo.dart';
+import 'package:flutter_vedio_first/demo/radio_demo.dart';
+import 'package:flutter_vedio_first/demo/switch_demo.dart';
+import 'package:flutter_vedio_first/demo/simpleDialog_demo.dart';
 
 class MaterialComponents extends StatelessWidget {
   // 定义方法 返回图片按钮部件
@@ -50,6 +53,18 @@ class MaterialComponents extends StatelessWidget {
           ListItem(
             title: 'check',
             page: CheckBoxDemo(),
+          ),
+          ListItem(
+            title: 'radio',
+            page: RadioDemo(),
+          ),
+          ListItem(
+            title: 'switch',
+            page: SwitchDemo(),
+          ),
+          ListItem(
+            title: 'simpledialog',
+            page: SimpleDialogDemo(),
           ),
         ],
       ),
