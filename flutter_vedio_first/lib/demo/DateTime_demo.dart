@@ -17,7 +17,7 @@ class _DateTimeDemoState extends State<DateTimeDemo> {
 
   // 选取日期的方法
   // 标记方法为异步
-  _selectDate()async{
+  Future _selectDate()async{
     // 弹出日期选择器
     // 定义变量接收返回值
     // 使用 await ：等待结果返回 再赋值
