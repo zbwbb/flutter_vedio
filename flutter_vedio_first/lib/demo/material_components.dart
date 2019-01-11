@@ -8,6 +8,7 @@ import 'package:flutter_vedio_first/demo/popUpMemuButton_Demo.dart';
 import 'package:flutter_vedio_first/demo/slider_demo.dart';
 import 'package:flutter_vedio_first/demo/DateTime_demo.dart';
 import 'package:flutter_vedio_first/demo/alertDialog_demo.dart';
+import 'package:flutter_vedio_first/demo/bottomsheet_demo.dart';
 
 
 class MaterialComponents extends StatelessWidget {
@@ -86,6 +87,10 @@ class MaterialComponents extends StatelessWidget {
           ListItem(
             title: 'alertdialog',
             page: AlertDialogDemo(),
+          ),
+          ListItem(
+            title: 'bottomsheet',
+            page: BottomSheetDemo(),
           ),
         ],
       ),
