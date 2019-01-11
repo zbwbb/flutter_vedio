@@ -39,7 +39,7 @@ class _BottomSheetDemoState extends State<BottomSheetDemo> {
 
   String _option = 'nothing';
 
-  _openModelBottomSheet()async{
+  _openModelBottomSheet() async {
 
     String option = await showModalBottomSheet(
       context: context,
