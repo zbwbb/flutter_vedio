@@ -6,6 +6,20 @@ class ChipDemo extends StatefulWidget {
 }
 
 class _ChipDemoState extends State<ChipDemo> {
+
+//
+List<String> _tags = [
+  "apple",
+  'brana',
+  'lemon'
+];
+// action
+String _action = 'nothing';
+// filter
+List<String>_selected = [];
+// choice
+String _choice = 'nothing';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,8 +29,8 @@ class _ChipDemoState extends State<ChipDemo> {
       ),
       body: Container(
         padding: EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
+          // mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             // 如果当一行显示不完的时候，可以使用 wrap 会自动换行
             Wrap(
@@ -41,23 +55,15 @@ class _ChipDemoState extends State<ChipDemo> {
                   labelStyle: TextStyle(fontSize: 22,fontWeight: FontWeight.bold,color: Colors.orange),
                   avatar: Icon(Icons.access_alarm),
                   deleteIcon: Icon(Icons.access_time),
+                  // 必须添加删除方法  才能显示删除图片
+                  onDeleted: (){},
                 ),
                 Chip(
                   label: Text('menu 3'),
                   labelStyle: TextStyle(fontSize: 22,fontWeight: FontWeight.bold,color: Colors.orange),
                   avatar: Icon(Icons.access_alarm),
-                  deleteIcon: Icon(Icons.access_time),
                 ),
                 // 添加一个分隔符
-                Divider(
-                  color: Colors.orange,
-                ),
-                Chip(
-                  label: Text('menu 4'),
-                  labelStyle: TextStyle(fontSize: 22,fontWeight: FontWeight.bold,color: Colors.orange),
-                  avatar: Icon(Icons.access_alarm),
-                  deleteIcon: Icon(Icons.access_time),
-                ),
                 Divider(
                   color: Colors.orange,
                 ),
@@ -70,10 +76,149 @@ class _ChipDemoState extends State<ChipDemo> {
                   deleteIconColor: Colors.blue,
                   deleteButtonTooltipMessage: '删除',
                 ),
+
+                //
+                Divider(
+                  height: 2,
+                ),
+                // 基于列表数据 生成切片
+                Wrap(
+                  spacing: 10.0,
+                  children: _tags.map((tag){
+                    // 每次取出一个 tag 值
+                    return Chip(
+                      label: Text(tag),
+                      deleteButtonTooltipMessage: tag,
+                      deleteIcon: Icon(Icons.delete_forever),
+                      onDeleted: (){
+                        // 当点击图标 可以删除当前的图标
+                        setState(() {
+                          // 从、当前的数组中删除数据
+                          _tags.remove(tag);
+                        });
+                      },
+                    );
+                  }).toList(),
+                ),
+
+                //
+                //
+                Divider(
+                  height: 2,
+                ),
+                Container(
+                  // 宽度占满横屏
+                  width: double.infinity,
+                  height: 50,
+                  color: Colors.black,
+                  child:Text('actionchip is :$_action',style: TextStyle(color: Colors.white),),
+                ),
+                // 动作切片 类似按钮
+                // 基于列表数据 生成动作切片
+                Wrap(
+                  spacing: 10.0,
+                  children: _tags.map((tag){
+                    // 每次取出一个 tag 值 
+                    return ActionChip(
+                      label: Text(tag),
+                      onPressed: (){
+                        // 改变状态
+                        setState(() {
+                          _action = tag;
+                        });
+                      },
+                    );
+                  }).toList(),
+                ),
+                //
+                //
+                Divider(
+                  height: 2,
+                ),
+                Container(
+                  // 宽度占满横屏
+                  width: double.infinity,
+                  height: 50,
+                  color: Colors.black,
+                  child:Text('filterchip is :$_selected.tostring()',style: TextStyle(color: Colors.white),),
+                ),
+                // 过滤切片 类似复选框 开关按钮  每个小部件都有两种不同的状态
+                // 基于列表数据 生成过滤切片
+                Wrap(
+                  spacing: 10.0,
+                  children: _tags.map((tag){
+                    // 每次取出一个 tag 值 
+                    return FilterChip(
+                      label: Text(tag),
+                      // 是否选中状态
+                      selected: _selected.contains(tag),
+                      onSelected: (value){
+                        // 
+                        setState(() {
+                          if (_selected.contains(tag)){
+                            // 删除的同时，上述的选中状态也会改变
+                            _selected.remove(tag);
+                          }else{
+                            // 添加到列表，同时上述的选中状态也会改变
+                            _selected.add(tag);
+                          }
+                        });
+
+                      },
+                    );
+                  }).toList(),
+                ),
+
+                //
+                Divider(
+                  height: 2,
+                ),
+                Container(
+                  // 宽度占满横屏
+                  width: double.infinity,
+                  height: 50,
+                  color: Colors.black,
+                  child:Text('choicechip is :$_choice',style: TextStyle(color: Colors.white),),
+                ),
+                // 选择切片 一组中只能选择一个 选中当前，之前取消
+                // 基于列表数据 生成过滤切片
+                Wrap(
+                  spacing: 10.0,
+                  children: _tags.map((tag){
+                    // 每次取出一个 tag 值 
+                    return ChoiceChip(
+                      label: Text(tag),
+                      // 是否选中状态
+                      selected: _choice == tag,
+                      onSelected: (value){
+                        // 
+                        setState(() {
+                          _choice = tag;
+                        });
+
+                      },
+                    );
+                  }).toList(),
+                ),
               ],
             ),
           ],
         ),
+      ),
+      // 通过按钮可以重置数据
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.restore),
+        onPressed: (){
+          setState(() {
+            _tags = [
+              'zhou',
+              'bin',
+              'wang',
+              'dong'
+            ];
+            _selected = [];
+          });
+        },
       ),
     );
   }

@@ -11,6 +11,7 @@ import 'package:flutter_vedio_first/demo/alertDialog_demo.dart';
 import 'package:flutter_vedio_first/demo/bottomsheet_demo.dart';
 import 'package:flutter_vedio_first/demo/SnackBar_demo.dart';
 import 'package:flutter_vedio_first/demo/chip_demo.dart';
+import 'package:flutter_vedio_first/demo/datatable_demo.dart';
 
 
 class MaterialComponents extends StatelessWidget {
@@ -101,6 +102,10 @@ class MaterialComponents extends StatelessWidget {
           ListItem(
             title: 'chip',
             page: ChipDemo(),
+          ),
+          ListItem(
+            title: 'datatable',
+            page: DataTableDemo(),
           ),
         ],
       ),
