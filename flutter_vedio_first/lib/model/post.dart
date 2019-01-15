@@ -3,6 +3,9 @@ class Post {
   final String title;
   final String author;
   final String imageUrl;
+  // 添加一个字段，用来控制 部件的初始状态
+  // bool 类型前面要添加 final
+  bool selected = false;
 
   // 初始化返回一个常量
   const Post({
@@ -10,6 +13,7 @@ class Post {
     this.author,
     this.imageUrl,
   });
+
 }
 
 final List<Post> posts = [

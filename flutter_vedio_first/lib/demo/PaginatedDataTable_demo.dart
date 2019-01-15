@@ -1,26 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vedio_first/model/post.dart';
 
-
-class DataTableDemo extends StatefulWidget {
+class PaginatedDataTableDemo extends StatefulWidget {
   @override
-  _DataTableDemoState createState() => _DataTableDemoState();
+  _PaginatedDataTableDemoState createState() => _PaginatedDataTableDemoState();
 }
 
-class _DataTableDemoState extends State<DataTableDemo> {
-
-
+class _PaginatedDataTableDemoState extends State<PaginatedDataTableDemo> {
+  
   bool _sortAscending = true;
   int _sortColumnIndex = 0;
 
-  //
-  bool _rowselectted = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('DataTableDemo'),
+        title: Text('PaginatedDataTableDemo'),
         elevation: 0.0,
       ),
       body: Container(
@@ -34,7 +30,6 @@ class _DataTableDemoState extends State<DataTableDemo> {
               sortAscending: _sortAscending,
               //
               onSelectAll: (bool value){
-                _rowselectted = value;
               },
 
               columns: [
@@ -94,14 +89,14 @@ class _DataTableDemoState extends State<DataTableDemo> {
                   return DataRow(
                     // 设置行的选择
                     // 可以使用数据来控制选择状态
-                    selected: _rowselectted,
-                    onSelectChanged: (bool value){
-                      setState(() {
-                        if (value != _rowselectted) {
-                          _rowselectted = value;
-                        }
-                      });
-                    },
+                    // selected: _rowselectted,
+                    // onSelectChanged: (bool value){
+                    //   setState(() {
+                    //     if (value != _rowselectted) {
+                    //       _rowselectted = value;
+                    //     }
+                    //   });
+                    // },
                     
                     cells: [
                       // cells 中得每个部件都是 DataCell
