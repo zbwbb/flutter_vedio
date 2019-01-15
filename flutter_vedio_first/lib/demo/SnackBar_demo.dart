@@ -29,13 +29,14 @@ class _SnackBarDemoState extends State<SnackBarDemo> {
   }
 }
 
+// 自定义
 class SnackBarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlatButton(
       child: Text('open SnackBar'),
       onPressed: () {
-        // 调起
+        // 调起  
         Scaffold.of(context).showSnackBar(SnackBar(
           content: Text('processing...'),
           action: SnackBarAction(

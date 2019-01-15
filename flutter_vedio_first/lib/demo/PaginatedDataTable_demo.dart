@@ -11,6 +11,8 @@ class _PaginatedDataTableDemoState extends State<PaginatedDataTableDemo> {
   bool _sortAscending = true;
   int _sortColumnIndex = 0;
 
+  // 创建数据源
+  final PostDataSource _postsDataSource = PostDataSource();
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,14 @@ class _PaginatedDataTableDemoState extends State<PaginatedDataTableDemo> {
         // 数据表格
         child: ListView(
           children: <Widget>[
-            DataTable(
+            PaginatedDataTable(
+              // 设置头部
+              header: Text('posts'),
+              // 设置数据
+              source: _postsDataSource,
+              // 每页显示的行数
+              rowsPerPage: 5,
+
               // 给数据表格排序 排序的参数应该是动态设置的
               sortColumnIndex: _sortColumnIndex,
               sortAscending: _sortAscending,
@@ -83,42 +92,49 @@ class _PaginatedDataTableDemoState extends State<PaginatedDataTableDemo> {
                   } 
                 )
               ],
-              // 用列表生成数据表格
-              rows: posts.map(
-                (post){
-                  return DataRow(
-                    // 设置行的选择
-                    // 可以使用数据来控制选择状态
-                    // selected: _rowselectted,
-                    // onSelectChanged: (bool value){
-                    //   setState(() {
-                    //     if (value != _rowselectted) {
-                    //       _rowselectted = value;
-                    //     }
-                    //   });
-                    // },
-                    
-                    cells: [
-                      // cells 中得每个部件都是 DataCell
-                      // cells 中得部件的个数与列的个数对应
-                      DataCell(
-                        Text(post.author),
-                      ),
-                      DataCell(
-                        Text(post.title),
-                      ),
-                      DataCell(
-                        Image.network(post.imageUrl),
-                      ),
-                      
-                    ]
-                  );
-                }
-              ).toList(),
             )
           ],
         ),
       ),
     );
   }
+}
+
+
+// 定义表示表格数据源的类
+class PostDataSource extends DataTableSource{
+
+  // 定义行数
+  final List<Post> _posts = posts;
+  // 定义选中的行数
+  int _selectedCount = 0;
+
+  @override
+    // 行数
+    int get rowCount => _posts.length;
+
+  @override
+    // 确定行的个数 false  不确定行的个数:true
+    bool get isRowCountApproximate => false;
+
+  @override
+    // 选中的行数
+    int get selectedRowCount => _selectedCount;
+
+  // 返回每行的内容
+  @override
+    DataRow getRow(int index) {
+      //
+      final Post post = _posts[index];
+      // 
+      return DataRow.byIndex(
+        index: index,
+        cells: <DataCell>[
+          DataCell(Text(post.title)),
+          DataCell(Text(post.author)),
+          DataCell(Image.network(post.imageUrl)),
+        ]
+      );
+    }
+  
 }
